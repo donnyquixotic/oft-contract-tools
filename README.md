@@ -7,10 +7,15 @@ A list of remote endpoint chain IDs can be found in `chainIds.md`
 
 ## OFT Token Transfer Script
 
-This script is designed to interact with the OFT smart contract to facilitate token transfers using `estimateFees()` and `sendFrom()`. If successful, it outputs the transaction hash which can be viewed on the appropriate network explorer. User passes quantity and remote chain id.
+This script is designed to interact with the OFT smart contract to facilitate token transfers using `estimateFees()` and `sendFrom()`. If successful, it outputs the transaction hash which can be viewed on the appropriate network explorer. 
 
-- `estimateFees()`: This function provides an estimate of the fees required to send a certain amount of tokens.
-- `sendFrom()`: This function allows you to send tokens from one address on the source blockchain to another on the destination.
+- `estimateFees()`: provides an estimate of fees required to send a certain amount of tokens
+- `sendFrom()`: transfer method to send tokens from one address on the source blockchain to another on the destination
+
+### Params/Flags
+
+- `--qty <amount>`: int amount in wei to be transfered
+- `--id <remote chain id>`: remote endpoint chain id
 
 ### Usage
 
@@ -20,13 +25,17 @@ npx hardhat sendFrom --qty 100000000000000 --id 199
 
 ## OFT Contract Verification Script
 
-This script is designed to verify and help troubleshoot basic OFT contract configuration settings by calling read actions on the contract. Specify the contract to test by setting `OFTContractAddress` in `verifyContract.ts`. This must be a contract on the network associated with the `RPC_ENDPOINT` environment variable. On successful check, it outputs address and fee information for further user verification. If a setting is incorrect, it outputs an error message containing instructions to resolve the issue.
+This script is designed to verify and help troubleshoot basic OFT contract configuration settings by calling read actions on the source OFT contract. Specify the contract to test by setting `OFTContractAddress` in `verifyContract.ts`. This must be a contract on the network associated with the `RPC_ENDPOINT` environment variable. On successful check, it outputs address and fee information for further user verification. If a setting is incorrect, it outputs an error message containing instructions to resolve the issue.
 
-- `useCustomAdapterParams()`: This function checks whether custom adapter params have been enabled.
-- `minDstGasLookup()`: This function checks that minDstGas has been set for both packet types for the remote chain.
-- `estimateSendFees()`: This function checks that fees can be successfully calculated and informs user if it has failed.
-- `token()`: This function returns the address of the OFT token, this can be used to verify token address.
-- `getTrustedRemoteAddress()`: this function returns the address of the OFT contract configure for the given remote chain id.
+- `useCustomAdapterParams()`: checks whether custom adapter params has been enabled
+- `minDstGasLookup()`: checks that minDstGas has been set for both packet types for the remote chain
+- `estimateSendFees()`: checks that fees can be successfully calculated and informs user if it has failed 
+- `token()`: returns the address of the OFT token which is output to the user for verification
+- `getTrustedRemoteAddress()`: returns the address of the OFT contract configured on the remote chain
+
+### Params/Flags
+
+- `--id <remote chain id>`: remote endpoint chain id
 
 ### Usage
 
@@ -53,9 +62,15 @@ INCORRECT CONTRACT SETTING: useCustomAdapterParams is set to 'false'. Set to 'tr
 
 This script is designed to set common OFT contract configutation settings. User passes remote chain id, contract address, and remote contract address. Successful configuration returns transaction has for each called action.
 
-- `setUseCustomAdapterParams()`: This function is called and sets `useCustomAdapterParams` to `true`.
-- `setMinDstGas()`: This function is called for each packet type and sets default `minGas` to `200000`.
-- `setTrustedRemoteAddress()`: This function sets remote OFT contract address on the remote chain id.
+- `setUseCustomAdapterParams()`: sets `useCustomAdapterParams` to `true`
+- `setMinDstGas()`: sets default `minGas` to `200000`, called for each packet type
+- `setTrustedRemoteAddress()`: sets remote OFT contract address for the remote chain id
+
+### Params/Flags
+
+- `--id <remote chain id>`: remote endpoint chain id
+- `--contract <contract address>`: source chain OFT contract address
+- `--remotecontract <contract address>`: remote chain OFT contract address
 
 ### Usage
 
@@ -65,7 +80,11 @@ npx hardhat setContractConfig --id 165 --contract 0xf5430284e7418891e3a0477d7598
 
 ## Parse ABI Script
 
-This script parses the specified abi json file and returns a list of function signatures and corresponding human readable methods. User passes the filename (excluding extension) located in the `/abi` directory.
+This script parses the specified abi json file (located in the `/abi` directory) and returns a list of function signatures and corresponding human readable methods.
+
+### Params/Flags
+
+- `--abi <file name>`: name of file excluding extension, e.g. usage example below is for file `oft.json`
 
 ### Usage
 
@@ -94,7 +113,7 @@ Clone the repository and navigate to the hardhat folder: `cd hardhat`.
 Install the required npm packages by running:
 
 ```
-npm install // NOTE: you must use `npm`, `yarn` will not install required dependences and will produce errors
+npm install // NOTE: you must use `npm`, `yarn` will not install required dependencies producing errors 
 ```
 
 Create a `.env` file in the root directory of the repository:
