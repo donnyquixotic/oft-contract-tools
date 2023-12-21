@@ -1,0 +1,1179 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_symbol",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_lzEndpoint",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "Approval",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_srcChainId",
+        "type": "uint16",
+        "indexed": false
+      },
+      {
+        "internalType": "bytes",
+        "name": "_srcAddress",
+        "type": "bytes",
+        "indexed": false
+      },
+      {
+        "internalType": "uint64",
+        "name": "_nonce",
+        "type": "uint64",
+        "indexed": false
+      },
+      {
+        "internalType": "bytes",
+        "name": "_payload",
+        "type": "bytes",
+        "indexed": false
+      },
+      {
+        "internalType": "bytes",
+        "name": "_reason",
+        "type": "bytes",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "MessageFailed",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address",
+        "indexed": true
+      }
+    ],
+    "type": "event",
+    "name": "OwnershipTransferred",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_srcChainId",
+        "type": "uint16",
+        "indexed": true
+      },
+      {
+        "internalType": "address",
+        "name": "_to",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "ReceiveFromChain",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_srcChainId",
+        "type": "uint16",
+        "indexed": false
+      },
+      {
+        "internalType": "bytes",
+        "name": "_srcAddress",
+        "type": "bytes",
+        "indexed": false
+      },
+      {
+        "internalType": "uint64",
+        "name": "_nonce",
+        "type": "uint64",
+        "indexed": false
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_payloadHash",
+        "type": "bytes32",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "RetryMessageSuccess",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_dstChainId",
+        "type": "uint16",
+        "indexed": true
+      },
+      {
+        "internalType": "address",
+        "name": "_from",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "internalType": "bytes",
+        "name": "_toAddress",
+        "type": "bytes",
+        "indexed": false
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "SendToChain",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_dstChainId",
+        "type": "uint16",
+        "indexed": false
+      },
+      {
+        "internalType": "uint16",
+        "name": "_type",
+        "type": "uint16",
+        "indexed": false
+      },
+      {
+        "internalType": "uint256",
+        "name": "_minDstGas",
+        "type": "uint256",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "SetMinDstGas",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "precrime",
+        "type": "address",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "SetPrecrime",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_remoteChainId",
+        "type": "uint16",
+        "indexed": false
+      },
+      {
+        "internalType": "bytes",
+        "name": "_path",
+        "type": "bytes",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "SetTrustedRemote",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_remoteChainId",
+        "type": "uint16",
+        "indexed": false
+      },
+      {
+        "internalType": "bytes",
+        "name": "_remoteAddress",
+        "type": "bytes",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "SetTrustedRemoteAddress",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "_useCustomAdapterParams",
+        "type": "bool",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "SetUseCustomAdapterParams",
+    "anonymous": false
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address",
+        "indexed": true
+      },
+      {
+        "internalType": "uint256",
+        "name": "value",
+        "type": "uint256",
+        "indexed": false
+      }
+    ],
+    "type": "event",
+    "name": "Transfer",
+    "anonymous": false
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "DEFAULT_PAYLOAD_SIZE_LIMIT",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "NO_EXTRA_GAS",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "PT_SEND",
+    "outputs": [
+      {
+        "internalType": "uint16",
+        "name": "",
+        "type": "uint16"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "owner",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "allowance",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "approve",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "account",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "balanceOf",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "circulatingSupply",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "decimals",
+    "outputs": [
+      {
+        "internalType": "uint8",
+        "name": "",
+        "type": "uint8"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "subtractedValue",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "decreaseAllowance",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_dstChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_toAddress",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bool",
+        "name": "_useZro",
+        "type": "bool"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_adapterParams",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "estimateSendFee",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "nativeFee",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "zroFee",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint64",
+        "name": "",
+        "type": "uint64"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "failedMessages",
+    "outputs": [
+      {
+        "internalType": "bytes32",
+        "name": "",
+        "type": "bytes32"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_srcChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_srcAddress",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "forceResumeReceive"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_version",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint16",
+        "name": "_chainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_configType",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "getConfig",
+    "outputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_remoteChainId",
+        "type": "uint16"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "getTrustedRemoteAddress",
+    "outputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "spender",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "addedValue",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "increaseAllowance",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_srcChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_srcAddress",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "isTrustedRemote",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "lzEndpoint",
+    "outputs": [
+      {
+        "internalType": "contract ILayerZeroEndpoint",
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_srcChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_srcAddress",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint64",
+        "name": "_nonce",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_payload",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "lzReceive"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint16",
+        "name": "",
+        "type": "uint16"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "minDstGasLookup",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "name",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_srcChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_srcAddress",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint64",
+        "name": "_nonce",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_payload",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "nonblockingLzReceive"
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "owner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "",
+        "type": "uint16"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "payloadSizeLimitLookup",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "precrime",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "renounceOwnership"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_srcChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_srcAddress",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint64",
+        "name": "_nonce",
+        "type": "uint64"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_payload",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function",
+    "name": "retryMessage"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_from",
+        "type": "address"
+      },
+      {
+        "internalType": "uint16",
+        "name": "_dstChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_toAddress",
+        "type": "bytes"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_amount",
+        "type": "uint256"
+      },
+      {
+        "internalType": "address payable",
+        "name": "_refundAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_zroPaymentAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_adapterParams",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "payable",
+    "type": "function",
+    "name": "sendFrom"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_version",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint16",
+        "name": "_chainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_configType",
+        "type": "uint256"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_config",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "setConfig"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_dstChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint16",
+        "name": "_packetType",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_minGas",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "setMinDstGas"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_dstChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_size",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "setPayloadSizeLimit"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_precrime",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "setPrecrime"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_version",
+        "type": "uint16"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "setReceiveVersion"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_version",
+        "type": "uint16"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "setSendVersion"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_remoteChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_path",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "setTrustedRemote"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "_remoteChainId",
+        "type": "uint16"
+      },
+      {
+        "internalType": "bytes",
+        "name": "_remoteAddress",
+        "type": "bytes"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "setTrustedRemoteAddress"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bool",
+        "name": "_useCustomAdapterParams",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "setUseCustomAdapterParams"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "bytes4",
+        "name": "interfaceId",
+        "type": "bytes4"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "supportsInterface",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "symbol",
+    "outputs": [
+      {
+        "internalType": "string",
+        "name": "",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "token",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "totalSupply",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "transfer",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "amount",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "transferFrom",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function",
+    "name": "transferOwnership"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint16",
+        "name": "",
+        "type": "uint16"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "trustedRemoteLookup",
+    "outputs": [
+      {
+        "internalType": "bytes",
+        "name": "",
+        "type": "bytes"
+      }
+    ]
+  },
+  {
+    "inputs": [],
+    "stateMutability": "view",
+    "type": "function",
+    "name": "useCustomAdapterParams",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ]
+  }
+]
