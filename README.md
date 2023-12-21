@@ -6,7 +6,7 @@ Useful hardhat scripts for Omnichain Fungible Token (OFT) contracts to:
 A list of remote endpoint chain IDs can be found in `chainIds.md`
 
 
-## OFT Token Transfer Script
+## Token Transfer Script
 
 This script is designed to interact with the OFT smart contract to facilitate token transfers using `estimateFees()` and `sendFrom()`. If successful, it outputs the transaction hash which can be viewed on the appropriate network explorer. 
 
@@ -25,7 +25,7 @@ npx hardhat sendFrom --qty 100000000000000 --id 199
 ```
 
 
-## OFT Contract Configuration Troubleshooting Script
+## Contract Configuration Troubleshooting Script
 
 This script is designed to verify and help troubleshoot basic OFT contract configuration settings by calling read actions on the source OFT contract. Specify the contract to test by setting `OFTContractAddress` in `verifyContract.ts`. This must be a contract on the network associated with the `RPC_ENDPOINT` environment variable. On successful check, it outputs address and fee information for further user verification. If a setting is incorrect, it outputs an error message containing instructions to resolve the issue.
 
@@ -61,7 +61,7 @@ INCORRECT CONTRACT SETTING: useCustomAdapterParams is set to 'false'. Set to 'tr
 ```
 
 
-## OFT Contract Configuration Script
+## Contract Configuration Script
 
 This script is designed to set common OFT contract configutation settings. User passes remote chain id, contract address, and remote contract address. Successful configuration returns transaction has for each called action.
 
