@@ -25,7 +25,7 @@ npx hardhat sendFrom --qty 100000000000000 --id 199
 ```
 
 
-## OFT Contract Verification Script
+## OFT Contract Configuration Troubleshooting Script
 
 This script is designed to verify and help troubleshoot basic OFT contract configuration settings by calling read actions on the source OFT contract. Specify the contract to test by setting `OFTContractAddress` in `verifyContract.ts`. This must be a contract on the network associated with the `RPC_ENDPOINT` environment variable. On successful check, it outputs address and fee information for further user verification. If a setting is incorrect, it outputs an error message containing instructions to resolve the issue.
 
