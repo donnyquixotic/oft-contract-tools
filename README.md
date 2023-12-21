@@ -5,6 +5,7 @@ Useful hardhat scripts for Omnichain Fungible Token (OFT) contracts to:
 
 A list of remote endpoint chain IDs can be found in `chainIds.md`
 
+
 ## OFT Token Transfer Script
 
 This script is designed to interact with the OFT smart contract to facilitate token transfers using `estimateFees()` and `sendFrom()`. If successful, it outputs the transaction hash which can be viewed on the appropriate network explorer. 
@@ -22,6 +23,7 @@ This script is designed to interact with the OFT smart contract to facilitate to
 ```
 npx hardhat sendFrom --qty 100000000000000 --id 199
 ```
+
 
 ## OFT Contract Verification Script
 
@@ -58,6 +60,7 @@ zroFee: 0
 INCORRECT CONTRACT SETTING: useCustomAdapterParams is set to 'false'. Set to 'true' by calling setUseCustomAdapterParams().
 ```
 
+
 ## OFT Contract Configuration Script
 
 This script is designed to set common OFT contract configutation settings. User passes remote chain id, contract address, and remote contract address. Successful configuration returns transaction has for each called action.
@@ -77,6 +80,7 @@ This script is designed to set common OFT contract configutation settings. User 
 ```
 npx hardhat setContractConfig --id 165 --contract 0xf5430284e7418891e3a0477d7598a3aa861d5c1d --remotecontract 0xf5430284e7418891e3a0477d7598a3aa861d5c1d
 ```
+
 
 ## Parse ABI Script
 
@@ -100,6 +104,7 @@ npx hardhat parseAbi --abi oft
   ...
 ]
 ```
+
 
 ## Setup & Installation
 
