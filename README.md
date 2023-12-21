@@ -1,3 +1,10 @@
+## OFT Contract Tools
+Useful hardhat scripts for Omnichain Fungible Token (OFT) contracts to:
+- Transfer tokens
+- Troubleshoot common contract configuration settings
+
+A list of remote endpoint chain IDs can be found in `chainIds.md`
+
 ## OFT Token Transfer Script
 
 This script is designed to interact with the OFT smart contract to facilitate token transfers using `estimateFees()` and `sendFrom()`. If successful, it outputs the transaction hash which can be viewed on the appropriate network explorer. User passes quantity and remote chain id.
@@ -104,3 +111,4 @@ PRIVATE_KEY=<Your__Private_Key>
 
 `RPC_ENDPOINT`: This should be the URL of your Ethereum JSON RPC endpoint.
 `PRIVATE_KEY`: The private key of the Ethereum address you intend to use with the script, for the setContract script this must be the private key for the contract owner.
+
