@@ -12,7 +12,7 @@ This script is designed to interact with the OFT smart contract to facilitate to
 - `estimateFees()`: provides an estimate of fees required to send a certain amount of tokens
 - `sendFrom()`: transfer method to send tokens from one address on the source blockchain to another on the destination
 
-### Params/Flags
+### Params
 
 - `--qty <amount>`: int amount in wei to be transfered
 - `--id <remote chain id>`: remote endpoint chain id
@@ -33,7 +33,7 @@ This script is designed to verify and help troubleshoot basic OFT contract confi
 - `token()`: returns the address of the OFT token which is output to the user for verification
 - `getTrustedRemoteAddress()`: returns the address of the OFT contract configured on the remote chain
 
-### Params/Flags
+### Params
 
 - `--id <remote chain id>`: remote endpoint chain id
 
@@ -66,7 +66,7 @@ This script is designed to set common OFT contract configutation settings. User 
 - `setMinDstGas()`: sets default `minGas` to `200000`, called for each packet type
 - `setTrustedRemoteAddress()`: sets remote OFT contract address for the remote chain id
 
-### Params/Flags
+### Params
 
 - `--id <remote chain id>`: remote endpoint chain id
 - `--contract <contract address>`: source chain OFT contract address
@@ -82,7 +82,7 @@ npx hardhat setContractConfig --id 165 --contract 0xf5430284e7418891e3a0477d7598
 
 This script parses the specified abi json file (located in the `/abi` directory) and returns a list of function signatures and corresponding human readable methods.
 
-### Params/Flags
+### Params
 
 - `--abi <file name>`: name of file excluding extension, e.g. usage example below is for file `oft.json`
 
