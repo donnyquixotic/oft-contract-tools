@@ -133,6 +133,6 @@ RPC_ENDPOINT=<Your_RPC_Endpoint_URL>
 PRIVATE_KEY=<Your__Private_Key>
 ```
 
-`RPC_ENDPOINT`: This should be the URL of your Ethereum JSON RPC endpoint.
-`PRIVATE_KEY`: The private key of the Ethereum address you intend to use with the script, for the setContract script this must be the private key for the contract owner.
+- `RPC_ENDPOINT`: URL of your Ethereum/EVM JSON RPC endpoint
+- `PRIVATE_KEY`: private key of the Ethereum address you intend to use with the script, for the setContract script this must be the private key for the contract owner
 
