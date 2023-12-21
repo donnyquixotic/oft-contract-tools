@@ -80,7 +80,7 @@ npx hardhat setContractConfig --id 165 --contract 0xf5430284e7418891e3a0477d7598
 
 ## Parse ABI Script
 
-This script parses the specified abi json file (located in the `/abi` directory) and returns a list of function signatures and corresponding human readable methods.
+This script parses the specified abi json file (located in the `/abi` directory) and returns a list of function signatures and corresponding human readable methods. This can be useful for interpreting unverified contract transactions.
 
 ### Params
 
