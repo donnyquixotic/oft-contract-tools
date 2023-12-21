@@ -63,7 +63,7 @@ INCORRECT CONTRACT SETTING: useCustomAdapterParams is set to 'false'. Set to 'tr
 
 ## Contract Configuration 
 
-This script is designed to set common OFT contract configutation settings. User passes remote chain id, contract address, and remote contract address. Successful configuration returns transaction has for each called action.
+This script is designed to set common OFT contract configutation settings. Successful configuration returns transaction has for each called action. `PRIVATE_KEY` environment variable must belong to the contract owner.
 
 - `setUseCustomAdapterParams()`: sets `useCustomAdapterParams` to `true`
 - `setMinDstGas()`: sets default `minGas` to `200000`, called for each packet type
@@ -84,7 +84,7 @@ npx hardhat setContractConfig --id 165 --contract 0xf5430284e7418891e3a0477d7598
 
 ## Parse ABI Script
 
-This script parses the specified abi json file (located in the `/abi` directory) and returns a list of function signatures and corresponding human readable methods. This can be useful for interpreting unverified contract transactions.
+This script parses the specified abi json file (located in the `/abi` directory) and returns a list of function signatures and corresponding human readable methods for interpreting unverified contract transactions.
 
 ### Params
 
